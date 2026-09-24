@@ -38,6 +38,14 @@ The images below are documentation previews for the current bundled `HANDHELD` s
 
 ![GBLOCK chat-generated handheld mockup](docs/evidence/gblock-handheld-skin-chat-generated-2026-09-24.png)
 
+## Prototype APK
+
+Private debug APK for device testing:
+
+- [Download latest debug APK](docs/apk/gblock-debug-latest.apk)
+
+This APK is a debug/private prototype build, not a signed release build and not intended for app-store distribution.
+
 ## Tooling Note
 
 Android Studio's integrated AI assistant is Google's Gemini in Android Studio, not OpenAI Codex. Treat Codex as an external Foundry/Codex app or CLI workflow from the canonical repository root unless a supported Android Studio integration path is separately proven.
