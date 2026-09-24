@@ -36,10 +36,6 @@ The images below are documentation previews for the current bundled `HANDHELD` s
 
 ### Handheld Skin Preview
 
-![GBLOCK handheld skin preview](docs/evidence/gblock-handheld-skin-preview-2026-09-24.png)
-
-### Chat-Generated Handheld Mockup
-
 ![GBLOCK chat-generated handheld mockup](docs/evidence/gblock-handheld-skin-chat-generated-2026-09-24.png)
 
 ## Tooling Note
