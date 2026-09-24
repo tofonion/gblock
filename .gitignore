@@ -1,0 +1,17 @@
+/.gradle/
+/.gradle-user/
+/.kotlin/
+/build/
+**/build/
+/.idea/
+/local.properties
+
+# Private local audio experiments are not project assets.
+/private-audio-overrides/*.mp3
+/private-audio-overrides/*.wav
+/private-audio-overrides/*.ogg
+
+# Upstream research repositories are acquired for inspection only.
+# They remain separate Git repositories and must not be absorbed into
+# the canonical application source history.
+/research/upstream/*/
