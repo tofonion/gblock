@@ -32,7 +32,11 @@ Private-use licensing posture: this is a personal, non-commercial project with n
 
 ## Visual Previews
 
-The images below are documentation previews for the current bundled `HANDHELD` skin. They are not proprietary source assets and are not Tetris/Nintendo screenshots.
+The images below are documentation previews for the current bundled skins. They are not proprietary source assets and are not Tetris/Nintendo screenshots.
+
+### GBLOCK Default Skin Preview
+
+![GBLOCK default skin device-layout preview](docs/evidence/gblock-default-skin-device-layout-2026-09-24.png)
 
 ### Handheld Skin Preview
 
