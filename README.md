@@ -30,6 +30,18 @@ Private-use licensing posture: this is a personal, non-commercial project with n
 - The default skin is named `GBLOCK`.
 - The alternate monochrome handheld skin is a private-use visual reference implementation inspired by the attached Game Boy-era screenshot; it uses original Compose drawing constants and does not import proprietary bitmap assets.
 
+## Visual Previews
+
+The images below are documentation previews for the current bundled `HANDHELD` skin. They are not proprietary source assets and are not Tetris/Nintendo screenshots.
+
+### Handheld Skin Preview
+
+![GBLOCK handheld skin preview](docs/evidence/gblock-handheld-skin-preview-2026-09-24.png)
+
+### Chat-Generated Handheld Mockup
+
+![GBLOCK chat-generated handheld mockup](docs/evidence/gblock-handheld-skin-chat-generated-2026-09-24.png)
+
 ## Tooling Note
 
 Android Studio's integrated AI assistant is Google's Gemini in Android Studio, not OpenAI Codex. Treat Codex as an external Foundry/Codex app or CLI workflow from the canonical repository root unless a supported Android Studio integration path is separately proven.
