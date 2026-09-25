@@ -62,21 +62,37 @@ import kotlinx.coroutines.delay
 import kotlin.math.abs
 
 class MainActivity : ComponentActivity() {
+    private var foregroundLossPauseRequest: (() -> Unit)? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            GestureBlocksApp()
+            GestureBlocksApp(
+                onForegroundLossPauseRequest = { foregroundLossPauseRequest = it },
+            )
         }
+    }
+
+    override fun onPause() {
+        foregroundLossPauseRequest?.invoke()
+        super.onPause()
     }
 }
 
 @Composable
-fun GestureBlocksApp() {
+fun GestureBlocksApp(
+    onForegroundLossPauseRequest: ((() -> Unit)?) -> Unit = {},
+) {
     val context = LocalContext.current
     val preferences = remember(context) { GblockPreferences(context) }
 
     // App-owned session state; the pure game rules stay in the core module.
-    var state by remember { mutableStateOf(GameState.initial(listOf(TetrominoType.T, TetrominoType.I, TetrominoType.O))) }
+    var state by remember {
+        mutableStateOf(
+            preferences.loadRecoverableGameState()
+                ?: GameState.initial(listOf(TetrominoType.T, TetrominoType.I, TetrominoType.O)),
+        )
+    }
     var sensitivity by remember { mutableStateOf(preferences.loadSensitivity()) }
     var skin by remember { mutableStateOf(preferences.loadSkin()) }
     var settingsOpen by remember { mutableStateOf(false) }
@@ -145,16 +161,26 @@ fun GestureBlocksApp() {
             }
         val after = GameCore.dispatch(state, effectiveCommand)
         state = after
+        preferences.saveRecoverableGameState(after)
         if (audioEnabled) {
             audioCueFor(effectiveCommand, before, after)?.let(audio::play)
         }
+    }
+
+    DisposableEffect(dispatch) {
+        onForegroundLossPauseRequest {
+            dispatch(GameCommand.Pause)
+        }
+        onDispose { onForegroundLossPauseRequest(null) }
     }
 
     // Drive gravity from the app layer so timing stays separate from core rules.
     LaunchedEffect(state.isPaused, state.isGameOver, state.level) {
         while (!latestState.isPaused && !latestState.isGameOver) {
             delay(gravityDelayMillis(latestState.level))
-            state = GameCore.dispatch(latestState, GameCommand.Tick)
+            val afterTick = GameCore.dispatch(latestState, GameCommand.Tick)
+            state = afterTick
+            preferences.saveRecoverableGameState(afterTick)
         }
     }
 
@@ -758,7 +784,7 @@ private fun audioCueFor(command: GameCommand, before: GameState, after: GameStat
         !before.isGameOver && after.isGameOver -> AudioCue.GameOver
         after.lines > before.lines -> AudioCue.LineClear
         command == GameCommand.Restart -> AudioCue.Restart
-        command == GameCommand.PauseToggle -> AudioCue.Pause
+        command == GameCommand.Pause || command == GameCommand.PauseToggle -> AudioCue.Pause
         command == GameCommand.RotateClockwise -> AudioCue.Rotate
         command == GameCommand.RotateCounterclockwise -> AudioCue.Rotate
         command == GameCommand.MoveLeft || command == GameCommand.MoveRight -> AudioCue.Move
@@ -810,6 +836,19 @@ private class GblockPreferences(context: Context) {
 
     fun saveAudioVolume(value: Float) {
         preferences.edit().putFloat(KeyAudioVolume, value.coerceIn(0f, 1f)).apply()
+    }
+
+    fun loadRecoverableGameState(): GameState? =
+        preferences.getString(KeyRecoverableGameState, null)
+            ?.let(::decodeRecoverableGameState)
+            ?.takeUnless { it.isGameOver }
+
+    fun saveRecoverableGameState(value: GameState) {
+        if (value.isGameOver) {
+            preferences.edit().remove(KeyRecoverableGameState).apply()
+        } else {
+            preferences.edit().putString(KeyRecoverableGameState, encodeRecoverableGameState(value)).apply()
+        }
     }
 
     private inline fun <reified T : Enum<T>> android.content.SharedPreferences.getEnum(
@@ -988,6 +1027,7 @@ private const val KeySensitivity = "sensitivity"
 private const val KeyAudioEnabled = "audio_enabled"
 private const val KeyMusicEnabled = "music_enabled"
 private const val KeyAudioVolume = "audio_volume"
+private const val KeyRecoverableGameState = "recoverable_game_state"
 
 // Attaches gesture interpretation to the board without embedding input in core rules.
 private fun Modifier.gestureControls(

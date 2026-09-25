@@ -77,6 +77,10 @@ RESEARCH FINDING:
 - Touch input emits commands; it does not mutate rules directly.
 - Renderer consumes snapshots/presentation state; it does not implement scoring, collision, line clear, or randomization.
 - Skin/presentation must not alter rules.
+- Active gameplay must immediately pause when the Android app loses foreground execution, including app switch, Home, screen lock, or backgrounding.
+- Returning to foreground must leave gameplay paused until the player explicitly resumes.
+- Pause must preserve board, active piece, next/randomizer state, score, lines, level, and relevant timing state.
+- If Android terminates the app after backgrounding, the interrupted session should recover in a paused state where feasible.
 - V1 distributable assets must be original or clearly licensed.
 - Movement buttons are not permanent V1 controls.
 - All packet progress must be documented in `docs/progress/`.

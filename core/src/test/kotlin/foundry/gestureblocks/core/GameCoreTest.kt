@@ -136,6 +136,45 @@ class GameCoreTest {
     }
 
     @Test
+    fun `pause request is one way and preserves active game state`() {
+        val state =
+            GameState(
+                board = Board(cells = mapOf(Position(4, 19) to TetrominoType.I)),
+                currentPiece = Tetromino(TetrominoType.L, rotation = 2),
+                currentPosition = Position(5, 7),
+                nextQueue = listOf(TetrominoType.S, TetrominoType.Z, TetrominoType.J),
+                score = 1234,
+                lines = 9,
+                level = 2,
+                isPaused = false,
+            )
+
+        val paused = GameCore.dispatch(state, GameCommand.Pause)
+        val pausedAgain = GameCore.dispatch(paused, GameCommand.Pause)
+
+        assertTrue(paused.isPaused)
+        assertEquals(paused, pausedAgain)
+        assertEquals(state.board, paused.board)
+        assertEquals(state.currentPiece, paused.currentPiece)
+        assertEquals(state.currentPosition, paused.currentPosition)
+        assertEquals(state.nextQueue, paused.nextQueue)
+        assertEquals(state.score, paused.score)
+        assertEquals(state.lines, paused.lines)
+        assertEquals(state.level, paused.level)
+    }
+
+    @Test
+    fun `paused foreground recovery does not auto resume on tick`() {
+        val paused =
+            GameState.initial(listOf(TetrominoType.T, TetrominoType.I))
+                .copy(isPaused = true)
+
+        val afterTick = GameCore.dispatch(paused, GameCommand.Tick)
+
+        assertEquals(paused, afterTick)
+    }
+
+    @Test
     fun `tick applies gravity without awarding soft drop score`() {
         val state = GameState.initial(listOf(TetrominoType.T, TetrominoType.I))
 

@@ -21,6 +21,14 @@ android {
 
 }
 
+tasks.withType<Test>().configureEach {
+    javaLauncher.set(
+        javaToolchains.launcherFor {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        },
+    )
+}
+
 dependencies {
     implementation(project(":core"))
 
@@ -33,4 +41,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    testImplementation(kotlin("test-junit5"))
 }

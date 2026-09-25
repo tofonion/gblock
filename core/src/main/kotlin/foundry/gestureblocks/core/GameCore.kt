@@ -10,6 +10,7 @@ object GameCore {
             GameCommand.RotateCounterclockwise -> rotateCounterclockwise(state)
             GameCommand.SoftDrop -> softDrop(state)
             GameCommand.HardDrop -> hardDrop(state)
+            GameCommand.Pause -> pause(state)
             GameCommand.PauseToggle -> togglePause(state)
             GameCommand.Tick -> tick(state)
             GameCommand.Restart -> GameState.initial()
@@ -91,6 +92,9 @@ object GameCore {
 
     private fun togglePause(state: GameState): GameState =
         if (state.isGameOver) state else state.copy(isPaused = !state.isPaused)
+
+    private fun pause(state: GameState): GameState =
+        if (state.isGameOver) state else state.copy(isPaused = true)
 
     private fun lockAndSpawn(state: GameState): GameState {
         // Lock, clear, score, level, then spawn the queued next piece.
