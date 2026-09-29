@@ -862,7 +862,7 @@ private class GblockPreferences(context: Context) {
 }
 
 // Presets keep tuning visible while device testing continues.
-private enum class GestureSensitivityPreset(
+internal enum class GestureSensitivityPreset(
     val label: String,
     val horizontalThresholdPx: Float,
     val softDropThresholdPx: Float,
@@ -871,24 +871,24 @@ private enum class GestureSensitivityPreset(
 ) {
     Responsive(
         label = "RESPONSIVE",
-        horizontalThresholdPx = 40f,
-        softDropThresholdPx = 64f,
-        hardDropThresholdPx = 180f,
-        hardDropVelocityPxPerSecond = 2600f,
+        horizontalThresholdPx = 32f,
+        softDropThresholdPx = 48f,
+        hardDropThresholdPx = 150f,
+        hardDropVelocityPxPerSecond = 2200f,
     ),
     Normal(
         label = "NORMAL",
-        horizontalThresholdPx = 48f,
-        softDropThresholdPx = 72f,
-        hardDropThresholdPx = 180f,
-        hardDropVelocityPxPerSecond = 2600f,
+        horizontalThresholdPx = 52f,
+        softDropThresholdPx = 76f,
+        hardDropThresholdPx = 210f,
+        hardDropVelocityPxPerSecond = 3000f,
     ),
     Deliberate(
         label = "DELIBERATE",
-        horizontalThresholdPx = 62f,
-        softDropThresholdPx = 90f,
-        hardDropThresholdPx = 240f,
-        hardDropVelocityPxPerSecond = 3300f,
+        horizontalThresholdPx = 78f,
+        softDropThresholdPx = 112f,
+        hardDropThresholdPx = 300f,
+        hardDropVelocityPxPerSecond = 3900f,
     ),
 }
 

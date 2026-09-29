@@ -362,6 +362,28 @@ Current calibration status:
 - Retest is required to determine whether pause is now easier and hard drop is no longer accidental.
 - V1 defaults are not locked yet.
 
+## Step 7 - Sensitivity Preset Separation
+
+Status: IN PROGRESS
+
+Goal:
+
+- Make the three sensitivity settings noticeably different before V1 gesture lock.
+
+Changes made:
+
+- `RESPONSIVE` now accepts shorter horizontal and downward movement and allows hard drop with less travel/speed.
+- `NORMAL` now sits in the middle instead of sharing hard-drop values with `RESPONSIVE`.
+- `DELIBERATE` now requires clearly larger movement and a faster/longer hard-drop gesture.
+- Added app tests proving:
+  - a short horizontal drag moves only on `RESPONSIVE`.
+  - a medium soft-drop drag works on `RESPONSIVE` and `NORMAL` but not `DELIBERATE`.
+  - hard-drop travel/speed requirements increase across the three presets.
+
+Retest still required:
+
+- Verify on-device whether `RESPONSIVE`, `NORMAL`, and `DELIBERATE` feel clearly distinct during real play.
+
 ## Step 6 - First Human Gesture Feedback And Threshold Adjustment
 
 Status: IN PROGRESS
