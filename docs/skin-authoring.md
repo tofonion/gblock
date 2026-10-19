@@ -1,23 +1,23 @@
-# GBLOCK Skin Authoring
+# GBLOCKS Skin Authoring
 
 Status: V1 in-APK skin boundary
 
-GBLOCK supports simple bundled skins inside the APK. A skin can currently change presentation values such as colors, panel styling, font sizes, spacing, and side-panel layout. A skin must not change game rules.
+GBLOCKS supports simple bundled skins inside the APK. A skin can currently change presentation values such as colors, panel styling, font sizes, spacing, and side-panel layout. A skin must not change game rules.
 
 ## Reference Skin
 
-`GBLOCK` is the default and reference skin.
+`GBLOCKS` is the default and reference skin.
 
 Use `GameSkin.Gblock` as the example when adding a new bundled skin. It defines:
 
 - `label`: short internal/user-facing name.
-- `menuLabel`: settings-menu label. GBLOCK currently appears as `GBLOCK DEFAULT`.
+- `menuLabel`: settings-menu label. GBLOCKS currently appears as `GBLOCKS DEFAULT`.
 - `palette`: colors for background, board, grid, borders, panels, text, menu, and cells.
 - `layout`: screen arrangement values such as padding, side-panel width, spacing, panel padding, and font sizes.
 
 ## Current Bundled Skins
 
-- `GBLOCK DEFAULT`: dark prototype reference skin.
+- `GBLOCKS DEFAULT`: dark prototype reference skin.
 - `HANDHELD`: monochrome low-color reference skin.
 
 These are selected through the settings menu and persisted locally.

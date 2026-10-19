@@ -900,8 +900,8 @@ private enum class GameSkin(
     val layout: SkinLayout,
 ) {
     Gblock(
-        label = "GBLOCK",
-        menuLabel = "GBLOCK DEFAULT",
+        label = "GBLOCKS",
+        menuLabel = "GBLOCKS DEFAULT",
         palette =
             SkinPalette(
                 background = Color(0xFF10141F),
@@ -991,7 +991,7 @@ private data class SkinLayout(
     val settingsButtonVerticalPadding: Int,
 ) {
     companion object {
-        // GBLOCK is the reference layout for future in-APK skins.
+        // GBLOCKS is the reference layout for future in-APK skins.
         val Reference =
             SkinLayout(
                 screenPaddingStart = 10,

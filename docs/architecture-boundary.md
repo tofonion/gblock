@@ -1,6 +1,6 @@
 # Architecture
 
-GBLOCK separates platform-independent game rules from Android presentation and services.
+GBLOCKS separates platform-independent game rules from Android presentation and services.
 
 - `core`: board, pieces, scoring, collision, rotation, game commands, snapshots, and gesture interpretation.
 - `app`: Compose rendering, touch capture, session timing, settings, recovery, and audio.

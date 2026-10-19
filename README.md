@@ -1,16 +1,16 @@
-# GBLOCK
+# GBLOCKS
 
 A gesture-controlled falling-block puzzle game for Android. Stack pieces, clear lines, and beat your high score with simple touch controls and a retro look.
 
-**[Download GBLOCK on itch.io](https://terrapunks.itch.io/gblocks)**
+**[Download GBLOCKS on itch.io](https://terrapunks.itch.io/gblocks)**
 
 ## Install
 
 Requires **Android 7.0 or newer**.
 
-1. Visit the [GBLOCK itch.io page](https://terrapunks.itch.io/gblocks) on your Android device and download the APK.
+1. Visit the [GBLOCKS itch.io page](https://terrapunks.itch.io/gblocks) on your Android device and download the APK.
 2. Open the downloaded file. If Android asks, allow installation from the browser or file manager you used.
-3. Install GBLOCK and open it from your app drawer.
+3. Install GBLOCKS and open it from your app drawer.
 
 Playable builds are distributed through itch.io. This repository contains the source code and build instructions.
 
@@ -31,7 +31,7 @@ Use the on-screen resume button to continue a paused game. Opening settings or l
 ## Features
 
 - Gesture controls that keep the playfield clear of buttons.
-- Colorful GBLOCK and monochrome Handheld skins.
+- Colorful GBLOCKS and monochrome Handheld skins.
 - Adjustable gesture sensitivity.
 - Score, high score, level, cleared-line count, and next-piece preview.
 - Sound effects, music controls, and adjustable volume.
@@ -39,9 +39,9 @@ Use the on-screen resume button to continue a paused game. Opening settings or l
 
 ## Preview
 
-Default skin layout preview:
+Gameplay-inspired artwork:
 
-![GBLOCK default skin layout preview](docs/evidence/gblock-default-skin-device-layout-2026-09-24.png)
+![GBLOCKS gameplay artwork](docs/promo-art/gblocks-faithful-gameplay-promo-2026-09-29.png)
 
 ## Build from source
 

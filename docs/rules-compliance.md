@@ -1,8 +1,8 @@
-# GBLOCK Rules Compliance
+# GBLOCKS Rules Compliance
 
 Status: RESEARCH FINDING / IMPLEMENTATION AUDIT
 
-This document tracks how the current GBLOCK prototype maps to standard falling-block tetromino rules.
+This document tracks how the current GBLOCKS prototype maps to standard falling-block tetromino rules.
 
 ## Implemented
 
@@ -76,4 +76,4 @@ Background references for falling-block gameplay include:
 - Hard Drop's Tetris Guideline page as a reference for modern guideline concepts.
 
 
-GBLOCK should continue to describe these as standard falling-block or tetromino rules in project materials, not as a licensed Tetris product.
+GBLOCKS should continue to describe these as standard falling-block or tetromino rules in project materials, not as a licensed Tetris product.

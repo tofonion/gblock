@@ -2,7 +2,7 @@
 
 The initial research compared four Android falling-block projects. Historical versions and source links are recorded in [the upstream inventory](../upstream-inventory.md).
 
-GBLOCK uses its own Kotlin game core and Compose renderer. The research favored separate rules, input, rendering, and audio responsibilities rather than importing an upstream application architecture.
+GBLOCKS uses its own Kotlin game core and Compose renderer. The research favored separate rules, input, rendering, and audio responsibilities rather than importing an upstream application architecture.
 
 ## Historical license findings
 
